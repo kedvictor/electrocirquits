@@ -1,0 +1,27 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: electrocirquits_development 
+  username: victor
+  password: kldaDt87sg
+  host: localhost
+  port: 5432
+  
+test:
+  <<: *default
+  database: electrocirquits_test
+  username: victor
+  password: kldaDt87sg
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: electrocirquits_production
+  username: electrocirquits
+  password: <%= ENV['ELECTROCIRQUITS_DATABASE_PASSWORD'] %>
