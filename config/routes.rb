@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root 'static_pages#index'
   get 'static_pages/index'
+  get '/backend' => 'static_pages#backend'
 
   
   # Example of regular route:
