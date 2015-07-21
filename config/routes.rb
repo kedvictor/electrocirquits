@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  root 'main#index'
-  get 'main/index'
+  root 'static_pages#index'
+  get 'static_pages/index'
 
   
   # Example of regular route:
