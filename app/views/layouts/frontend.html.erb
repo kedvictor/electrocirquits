@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+    <%= render :partial => 'layouts/head' %>
+
+    <body>
+        <div id="main-container" class="container">
+
+            <%= render :partial => 'layouts/frontend_header' %>
+
+            <div class="row">
+                <div id="content" class="col-md-12" style="background-color: #F5F5F5;">
+                    <%= yield %>
+                </div>
+            </div>
+
+            <%= render :partial => 'layouts/footer' %> 
+
+        </div>
+    </body>
+
+</html>

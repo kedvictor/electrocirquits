@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+    <%= render :partial => 'layouts/head' %>
+
+    <body>
+        <div id="main-container" class="container">
+
+            <%= render :partial => 'layouts/backend_header' %>
+
+            <div class="row">
+                <div id="sidebar" class="col-md-3" style="background-color: #E0E0E0; min-height: 200px;">
+                    <%= render :partial => 'layouts/sidebar' %>
+                </div>
+                <div id="content" class="col-md-9" style="background-color: #F0F0F0; min-height: 200px;">
+                    <%= yield %>
+                </div>
+            </div>
+
+            <%= render :partial => 'layouts/footer' %> 
+
+        </div>
+    </body>
+
+</html>

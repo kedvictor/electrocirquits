@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'activerecord-session_store'
+gem 'bootstrap-sass', '~> 3.3.5'
 
 group :development, :test do
   gem 'byebug'
