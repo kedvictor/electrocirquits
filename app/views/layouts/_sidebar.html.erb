@@ -1,11 +1,22 @@
 
+
 <ul class="nav nav-tabs nav-stacked">
-    <li class="active"><a href="" >Статистика</a></li>
-    <li><a href="" >Напрямки</a></li>
-    <li><a href="" >Групи</a></li>
-    <li><a href="" >Студенти</a></li>
-    <li><a href="" >Оцінювання</a></li>
-    <li><a href="" >Оцінки</a></li>
+    
+    <% if controller_name == 'statistics' %><li class="active"><% else %><li><% end %>
+    <%= link_to 'Статистика', statistics_path %> </li>
+    
+    <% if controller_name == 'specialities' %><li class="active"><% else %><li><% end %>  
+    <%= link_to 'Напрямки підготовки', specialities_path %> </li>
+    
+    <% if controller_name == 'groups' %><li class="active"><% else %><li><% end %>  
+    <%= link_to 'Групи', groups_path %> </li>
+    
+    <% if controller_name == 'students' %><li class="active"><% else %><li><% end %>  
+    <%= link_to 'Студенти', students_path %> </li>
+    
+    <% if controller_name == 'examinations' %><li class="active"><% else %><li><% end %>  
+    <%= link_to 'Оцінювання', examinations_path %> </li>
+   
     
 </ul>
 

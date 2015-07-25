@@ -50,6 +50,17 @@
     border-left-color: #DCDEE0;
     border-left-width: 1px;
     padding: 10px;
+    
+    span.page_title {
+        display: block;
+        font-size: larger;
+        font-weight: bold;
+        color: cornflowerblue;
+        margin-bottom: 20px;
+    }
+    
+    .edit_link { color: darkgreen; }
+    .destroy_link { color: #B00100; }
 }
 
 

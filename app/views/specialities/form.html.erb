@@ -1,0 +1,23 @@
+
+<span class="page_title">
+    <%= @speciality.new_record? ? 'Створення нового напрямку' : 'Редактування напрямку' %> 
+</span>
+
+<%= form_for @speciality do |form| %>
+
+  <table class="table">
+      <tr>
+          <td class="text-right" width='20%'>Назва</td>
+          <td class="text-left"><%= form.text_field :title, class: 'col-xs-9' %></td>
+      </tr>
+      <tr>
+          <td class="text-right">Коротка назва</td>
+          <td class="text-left"><%= form.text_field :short_title %></td>
+      </tr>
+      <tr>
+          <td><%= link_to "Відмінити", specialities_path, class: 'btn btn-warning' %></td>
+          <td><%= form.submit (@speciality.new_record? ? 'Створити' : 'Зберегти'), class: 'btn btn-primary' %></td>
+      </tr>
+  </table>
+
+<% end %>

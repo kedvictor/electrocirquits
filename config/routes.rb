@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get 'static_pages/index'
   get '/backend' => 'statistics#index'
+  
+  get '/statistics/index' => 'statistics#index', :as => 'statistics'
 
   scope 'backend' do
     resources :specialities

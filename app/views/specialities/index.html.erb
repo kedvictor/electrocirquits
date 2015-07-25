@@ -1,1 +1,29 @@
-specialities
+<span class=page_title>Перелік напрямів підготовки (спеціальностей) </span>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Коротка назва</th>
+            <th>Дія</th>
+        </tr>
+    </thead>
+
+    <% @specialities.each do |speciality| %>
+      <tr>
+          <td><%= speciality.id %></td>
+          <td><%= speciality.title %></td>
+          <td><%= speciality.short_title %></td>
+          <td><%= link_to 'Редактувати', edit_speciality_path(speciality), class: 'edit_link' %>
+              <% if speciality.groups.empty? %>
+                | <%= link_to 'Видалити', speciality_path(speciality), method: :delete, class: 'destroy_link' %>
+              <% end %>
+          </td>
+      </tr>
+    <% end %>
+
+</table>
+
+<%= link_to 'Створити новий напрямок', new_speciality_path, class: 'btn btn-primary' %>
