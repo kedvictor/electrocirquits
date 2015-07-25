@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
  
   protect_from_forgery with: :exception
   
+  before_action :authenticate
+  
+  private
+  
   def authenticate
     authentication_text = 'Administration password required. Please enter username && password.'
     authenticate_or_request_with_http_basic(authentication_text) do |username, password|

@@ -2,8 +2,15 @@ Rails.application.routes.draw do
   
   root 'static_pages#index'
   get 'static_pages/index'
-  get '/backend' => 'static_pages#backend'
+  get '/backend' => 'statistics#index'
 
+  scope 'backend' do
+    resources :specialities
+    resources :groups
+    resources :students
+    resources :examinations
+  end
+  
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

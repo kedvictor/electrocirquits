@@ -9,15 +9,13 @@
             <%= render :partial => 'layouts/backend_header' %>
 
             <div class="row">
-                <div id="sidebar" class="col-md-3" style="background-color: #E0E0E0; min-height: 200px;">
+                <div id="sidebar" class="col-md-3">
                     <%= render :partial => 'layouts/sidebar' %>
                 </div>
-                <div id="content" class="col-md-9" style="background-color: #F0F0F0; min-height: 200px;">
+                <div id="content" class="col-md-9">
                     <%= yield %>
                 </div>
             </div>
-
-            <%= render :partial => 'layouts/footer' %> 
 
         </div>
     </body>

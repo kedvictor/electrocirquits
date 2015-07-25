@@ -1,14 +1,9 @@
 class StaticPagesController < ApplicationController
   
-  before_action :authenticate, only: :backend
+  skip_before_action :authenticate
   
   def index
     render layout: 'frontend'
   end
-  
-  def backend
-    render layout: 'backend'
-  end
-  
     
 end
