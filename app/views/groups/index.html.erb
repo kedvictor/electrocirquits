@@ -1,1 +1,35 @@
-groups
+<span class=page_title>Перелік академічних груп </span>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Рік</th>
+            <th>Напрямок підготовки</th>
+            <th>Кількість студентів</th>
+            <th>Активність</th>
+            <th>Дія</th>
+        </tr>
+    </thead>
+
+    <% @groups.each do |group| %>
+      <tr>
+          <td><%= group.id %></td>
+          <td><%= group.title %></td>
+          <td><%= group.year %></td>
+          <td><%= group.speciality.short_title %></td>
+          <td><%= group.students.count %></td>
+          <td><%= group.active ? 'активна' : 'неактивна' %></td>
+          <td><%= link_to 'Редактувати', edit_group_path(group), class: 'text-success' %>
+              <% if group.students.empty? %>
+                | <%= link_to 'Видалити', group_path(group), method: :delete, class: 'text-danger' %>
+              <% end %>
+          </td>
+      </tr>
+    <% end %>
+
+</table>
+
+<%= link_to 'Створити нову групу', new_group_path, class: 'btn btn-primary' %>

@@ -1,0 +1,51 @@
+
+<span class="page_title">
+    <%= @group.new_record? ? 'Створення нової групи' : 'Редактування групи' %> 
+</span>
+
+<%= form_for @group, html: { id: 'group_form' } do |form| %>
+
+  <table class="table">
+      <tr>
+          <td class="text-right" width='20%'><%= form.label :title, 'Назва' %></td>
+          <td class="text-left"><%= form.text_field :title, class: 'col-xs-4' %></td>
+      </tr>
+      <tr>
+          <td class="text-right"><%= form.label :year, 'Рік' %></td>
+          <td class="text-left"><%= form.text_field :year %></td>
+      </tr>
+      <tr>
+          <td class="text-right"><%= form.label :speciality_id, 'Напрямок' %></td>
+          <td class="text-left"><%= form.collection_select(:speciality_id, Speciality.all, :id, :title, {:include_blank => '-- Виберіть напрямок підготовки --'}) %></td>
+      </tr>
+      <tr>
+          <td class="text-right"><%= form.label :active, 'Активність' %></td>
+          <td class="text-left"><%= form.check_box :active %></td>
+      </tr>
+      <tr>
+          <td><%= link_to "Відмінити", groups_path, class: 'btn btn-warning' %></td>
+          <td><%= form.submit (@group.new_record? ? 'Створити' : 'Зберегти'), class: 'btn btn-primary' %></td>
+      </tr>
+  </table>
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+      
+      $('#group_form').validate({
+          rules: {
+              'group[title]': {required: true},
+              'group[year]': {required: true},
+              'group[speciality_id]': {required: true}
+          },
+          messages: {
+              'group[title]': 'Заповніть поле',
+              'group[year]': 'Вкажіть рік',
+              'group[speciality_id]': 'Виберіть напрямок підготовки'
+          }
+      });
+  });
+
+</script>

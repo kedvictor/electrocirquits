@@ -59,8 +59,24 @@
         margin-bottom: 20px;
     }
     
-    .edit_link { color: darkgreen; }
-    .destroy_link { color: #B00100; }
+    label.error {
+        font-size: smaller;
+        color: red;
+        font-style: italic;
+        float: right;
+    }
+    
+    .flash {
+        display: none;
+        text-align: center;
+        min-height: 40px;
+        line-height: 40px;
+        border: 1px #999 solid;
+        border-radius: 6px;
+    }
+    
+    
+    
 }
 
 

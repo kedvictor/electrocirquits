@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-    <%= render :partial => 'layouts/head' %>
+    <%= render partial: 'layouts/head' %>
 
     <body>
         <div id="main-container" class="container">
 
-            <%= render :partial => 'layouts/backend_header' %>
+            <%= render partial: 'layouts/backend_header' %>
 
             <div class="row">
                 <div id="sidebar" class="col-md-3">
-                    <%= render :partial => 'layouts/sidebar' %>
+                    <%= render partial: 'layouts/sidebar' %>
                 </div>
                 <div id="content" class="col-md-9">
+                    <%= render partial: 'layouts/flash' %>
                     <%= yield %>
                 </div>
             </div>

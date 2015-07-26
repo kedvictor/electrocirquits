@@ -14,10 +14,11 @@ class SpecialitiesController < ApplicationController
   def create
     @speciality = Speciality.new speciality_params
     if @speciality.save
-      flash[:notice] = 'Напрямок/спеціальність створено.'
+      flash[:success] = 'Напрямок/спеціальність створено'
       redirect_to specialities_path
     else
-      render action: :new
+      flash[:error] = 'Неможливо зберегти напрямок'
+      render action: :form
     end
   end
 
@@ -29,10 +30,10 @@ class SpecialitiesController < ApplicationController
   def update
     @speciality = Speciality.find params[:id]
     if @speciality.update_attributes speciality_params
-      flash[:notice] = 'Напрямок підготовки змінено.'
+      flash[:success] = 'Напрямок підготовки змінено'
       redirect_to specialities_path
     else
-      render action: :edit
+      render action: :form
     end
   end
   
@@ -40,9 +41,9 @@ class SpecialitiesController < ApplicationController
     @speciality = Speciality.find params[:id]
     if @speciality.groups.empty?
       @speciality.destroy
-      flash[:notice] = 'Напрямок підготовки видалено.'
+      flash[:success] = 'Напрямок підготовки видалено'
     else
-      flash[:error] = 'Неможливо видалити напрямок підготовки, так як він звязаний з групами.'
+      flash[:error] = 'Неможливо видалити напрямок підготовки, так як він звязаний з групами'
     end
     redirect_to specialities_path
   end
