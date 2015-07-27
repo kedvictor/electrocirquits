@@ -16,7 +16,7 @@
           <td><%= speciality.id %></td>
           <td><%= speciality.title %></td>
           <td><%= speciality.short_title %></td>
-          <td><%= link_to 'Редактувати', edit_speciality_path(speciality), class: 'text-success' %>
+          <td><%= link_to 'Редагувати', edit_speciality_path(speciality), class: 'text-success' %>
               <% if speciality.groups.empty? %>
                 | <%= link_to 'Видалити', speciality_path(speciality), method: :delete, class: 'text-danger' %>
               <% end %>

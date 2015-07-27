@@ -1,1 +1,43 @@
-students
+<span class="page_title">Список студентів</span>
+
+<% if @group_id %>
+  <span style="float:right"><%= link_to 'Показати всі групи', students_path  %></span>
+<% end %>
+
+<% @groups.each do |group| %>
+  <br />
+  <table class="table">
+      <thead>
+          <tr>
+              <th><%= group.title %></th>
+              <th><%= group.speciality.title %></th>
+              <th><%= group.year %></th>
+              <th class="text-right">
+                  <%= link_to 'Додати студента', new_student_path(group_id: group.id) %>
+                  <% unless @group_id %>
+                      | <%= link_to 'Показати тільки цю групу', students_path(group_id: group.id) %>
+                  <% end %>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <% n = 1 %>
+          <% group.students.each do |student| %>
+            <tr>
+                <td><%= n %>.</td>
+                <td><%= student.full_name %></td>
+                <td><%= student.active ? 'активний' : 'неактивний' %></td>
+                <td class="text-right">
+                      <%= link_to 'Редагувати', edit_student_path(student), class: 'text-success' %>
+                      <% if student.balls.empty? %>
+                        | <%= link_to 'Видалити', student_path(group), method: :delete, class: 'text-danger' %>
+                      <% end %>
+                </td>
+            </tr>
+            <% n += 1 %>
+          <% end %>
+      </tbody>
+
+  </table>
+
+<% end %>

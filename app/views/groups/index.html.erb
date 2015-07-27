@@ -22,7 +22,7 @@
           <td><%= group.speciality.short_title %></td>
           <td><%= group.students.count %></td>
           <td><%= group.active ? 'активна' : 'неактивна' %></td>
-          <td><%= link_to 'Редактувати', edit_group_path(group), class: 'text-success' %>
+          <td><%= link_to 'Редагувати', edit_group_path(group), class: 'text-success' %>
               <% if group.students.empty? %>
                 | <%= link_to 'Видалити', group_path(group), method: :delete, class: 'text-danger' %>
               <% end %>

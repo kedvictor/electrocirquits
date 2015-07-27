@@ -1,0 +1,44 @@
+
+<span class="page_title">
+    <%= @student.new_record? ? 'Додавання студента до групи' : 'Редагування студента' %> 
+</span>
+<div class="clearfix"></div>
+
+
+<%= form_for @student, html: {id: 'student_form'} do |form| %>
+  
+  <%= form.hidden_field :group_id, :value => @group_id || @student.group_id %>
+
+  <table class="table">
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :full_name, 'Фамілія, імя та по-батькові' %></td>
+          <td class="text-left"><%= form.text_field :full_name, class: 'col-xs-8' %></td>
+        </tr>
+        <tr>
+            <td class="text-right"><%= form.label :active, 'Активність' %></td>
+            <td class="text-left"><%= form.check_box :active %></td>
+        </tr>
+        <tr>
+            <td><%= link_to "Відмінити", students_path(group_id: @group_id), class: 'btn btn-warning' %></td>
+            <td><%= form.submit (@student.new_record? ? 'Створити' : 'Зберегти'), class: 'btn btn-primary' %></td>
+        </tr>
+  </table>
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+      
+      $('#student_form').validate({
+          rules: {
+              'student[full_name]': {required: true}              
+          },
+          messages: {
+              'student[full_name]': 'Заповніть поле'
+          }
+      });
+  });
+
+</script>
+
