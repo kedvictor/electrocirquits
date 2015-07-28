@@ -1,1 +1,49 @@
-examinations
+<span class="page_title">Типи оцінювання</span>
+
+<% if @group_id %>
+  <span style="float:right"><%= link_to 'Показати всі групи', examinations_path  %></span>
+<% end %>
+
+<% @groups.each do |group| %>
+  <br />
+  <table class="table">
+      <thead>
+          <tr>
+              <th><%= group.title %></th>
+              <th><%= group.speciality.short_title %></th>
+              <th><%= group.year %></th>
+              <th class="text-right" colspan="2">
+                  <%= link_to 'Додати тип оцінювання', 
+                    new_examination_path(examination_group_id: group.id, group_id: @group_id) %>
+                  <% unless @group_id %>
+                      | <%= link_to 'Показати тільки цю групу', 
+                          examinations_path(group_id: group.id) %>
+                  <% end %>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <% n = 1 %>
+          <% group.examinations.each do |examination| %>
+            <tr>
+                <td><%= n if examination.active %>.</td>
+                <td><%= link_to examination.title, examination_path(examination, group_id: @group_id) %></td>
+                <td><%= examination.date %></td>
+                <td><%= examination.active ? 'активний' : 'неактивний' %></td>
+                <td class="text-right">
+                      <%= link_to 'Детально', examination_path(examination, group_id: @group_id) %>
+                      | <%= link_to 'Редагувати', edit_examination_path(examination, 
+                        group_id: @group_id), class: 'text-success' %>
+                      <% if examination.balls.empty? %>
+                        | <%= link_to 'Видалити', examination_path(examination, 
+                            group_id: @group_id), method: :delete, class: 'text-danger' %>
+                      <% end %>
+                </td>
+            </tr>
+            <% n += 1 if examination.active %>
+          <% end %>
+      </tbody>
+
+  </table>
+
+<% end %>

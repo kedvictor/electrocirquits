@@ -1,0 +1,52 @@
+
+<% group = @examination.group %>
+<span class="page_title">
+    Детальний перегляд типу оцінювання (<%= "#{group.title}, #{group.speciality.short_title}, #{group.year}" %>)
+</span>
+<div class="clearfix"></div>
+
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="text-right" style="width: 40%;">id:</td>
+            <td><%= @examination.id %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Назва:</td>
+            <td><%= @examination.title %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Коротка назва:</td>
+            <td><%= @examination.short_title %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Дата проведення:</td>
+            <td><%= @examination.date.strftime("%d.%m.%Y") if @examination.date %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Мнемоніка:</td>
+            <td><%= @examination.mnemo %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Примітка:</td>
+            <td><%= @examination.note %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Максимальний бал:</td>
+            <td><%= @examination.max_value %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Коефіцієнт (вага) оцінювання:</td>
+            <td><%= @examination.weight %></td>
+        </tr>
+        <tr>
+            <td class="text-right">Активність:</td>
+            <td><%= @examination.active ? 'активний' : 'неактивний' %></td>
+        </tr>
+
+    </tbody>
+</table>
+
+<%= link_to 'Назад до списку', examinations_path(group_id: @group_id), class: 'btn btn-primary' %>
+

@@ -1,0 +1,79 @@
+
+<span class="page_title">
+    <%= @examination.new_record? ? 'Додавання типу оцінювання до групи' : 'Редагування типу оцінювання' %> 
+</span>
+<div class="clearfix"></div>
+
+
+<%= form_for @examination, html: {id: 'examination_form'} do |form| %>
+  
+  <% if @group_id %>
+    <%= hidden_field_tag :group_id, @group_id %>
+  <% end %>
+  <%= form.hidden_field :group_id, :value => @examination.group_id %>
+
+  <table class="table">
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :title, 'Назва' %></td>
+          <td class="text-left"><%= form.text_field :title, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :short_title, 'Коротка назва' %></td>
+          <td class="text-left"><%= form.text_field :short_title, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :note, 'Примітка' %></td>
+          <td class="text-left"><%= form.text_field :note, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :mnemo, 'Мнемоніка' %></td>
+          <td class="text-left"><%= form.text_field :mnemo, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :date, 'Дата проведення' %></td>
+          <td class="text-left"><%= form.text_field :date, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :max_value, 'Максимальний бал' %></td>
+          <td class="text-left"><%= form.text_field :max_value, class: 'col-xs-8' %></td>
+      </tr
+      <tr>
+          <td class="text-right" width='30%'><%= form.label :weight, 'Вага' %></td>
+          <td class="text-left"><%= form.text_field :weight, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right"><%= form.label :active, 'Активність' %></td>
+          <td class="text-left"><%= form.check_box :active %></td>
+      </tr>
+      <tr>
+          <td><%= link_to "Відмінити", examinations_path(group_id: @group_id), class: 'btn btn-warning' %></td>
+          <td><%= form.submit (@examination.new_record? ? 'Створити' : 'Зберегти'), class: 'btn btn-primary' %></td>
+      </tr>
+  </table>
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    
+      $('input#examination_title').focus();
+      
+      $('input#examination_date').datepicker({
+          format: 'dd.mm.yyyy'
+      });
+      
+      $('#examination_form').validate({
+          rules: {
+              'examination[title]': {required: true},
+              'examination[max_value]': {required: true}
+          },
+          messages: {
+              'examination[title]': 'Вкажіть назву',
+              'examination[max_value]': 'Вкажіть максимальний бал'
+          }
+      });
+  });
+
+</script>
+

@@ -13,7 +13,7 @@
               <th><%= group.speciality.title %></th>
               <th><%= group.year %></th>
               <th class="text-right">
-                  <%= link_to 'Додати студента', new_student_path(group_id: group.id) %>
+                  <%= link_to 'Додати студента', new_student_path(student_group_id: group.id, group_id: @group_id) %>
                   <% unless @group_id %>
                       | <%= link_to 'Показати тільки цю групу', students_path(group_id: group.id) %>
                   <% end %>
@@ -24,17 +24,17 @@
           <% n = 1 %>
           <% group.students.each do |student| %>
             <tr>
-                <td><%= n %>.</td>
+                <td><%= n if student.active %>.</td>
                 <td><%= student.full_name %></td>
                 <td><%= student.active ? 'активний' : 'неактивний' %></td>
                 <td class="text-right">
-                      <%= link_to 'Редагувати', edit_student_path(student), class: 'text-success' %>
+                      <%= link_to 'Редагувати', edit_student_path(student, group_id: @group_id), class: 'text-success' %>
                       <% if student.balls.empty? %>
-                        | <%= link_to 'Видалити', student_path(group), method: :delete, class: 'text-danger' %>
+                        | <%= link_to 'Видалити', student_path(student, group_id: @group_id), method: :delete, class: 'text-danger' %>
                       <% end %>
                 </td>
             </tr>
-            <% n += 1 %>
+            <% n += 1 if student.active %>
           <% end %>
       </tbody>
 
