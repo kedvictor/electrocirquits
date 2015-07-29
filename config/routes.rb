@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/backend/balls/edit_ball/:examination_id/:student_id' => 'balls#edit_ball', :as => 'edit_ball'
   get '/backend/balls/update_ball/:examination_id/:student_id' => 'balls#update_ball', :as => 'update_ball'
   get '/backend/balls/view_ball/:examination_id/:student_id' => 'balls#view_ball', :as => 'view_ball'
+  
+  get '/backend/preview' => 'static_pages#preview', :as => 'preview'
+  get '/backend/generate_page' => 'static_pages#generate_page', :as => 'generate_page'
+  
   get '/statistics/index' => 'statistics#index', :as => 'statistics'
 
   scope 'backend' do

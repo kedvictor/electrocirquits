@@ -16,6 +16,10 @@
     
     <% if controller_name == 'examinations' %><li class="active"><% else %><li><% end %>  
     <%= link_to 'Типи оцінювання', examinations_path %> </li>
+    
+    <li><%= link_to 'Попередній перегляд', preview_path, target: '_blank' %></li>
+    
+    <li><%= link_to 'Згенерувати сторінку', generate_page_path, target: '_blank' %></li>
    
     
 </ul>
