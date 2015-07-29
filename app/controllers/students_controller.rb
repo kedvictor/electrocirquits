@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   before_action :set_group
   
   def index
-    get_examinations_groups
+    get_students_groups
   end
   
   def new
@@ -58,7 +58,7 @@ class StudentsController < ApplicationController
     @group_id = params[:group_id]
   end
   
-  def get_student_groups
+  def get_students_groups
     if @group_id
       group = Group.find_by_id @group_id
       @groups = [group]

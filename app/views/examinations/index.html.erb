@@ -27,7 +27,7 @@
           <% group.examinations.each do |examination| %>
             <tr>
                 <td><%= n if examination.active %>.</td>
-                <td><%= link_to examination.title, examination_path(examination, group_id: @group_id) %></td>
+                <td><%= link_to examination.title, balls_path(examination.id) %></td>
                 <td><%= examination.date %></td>
                 <td><%= examination.active ? 'активний' : 'неактивний' %></td>
                 <td class="text-right">
