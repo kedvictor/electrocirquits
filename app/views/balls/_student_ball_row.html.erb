@@ -1,0 +1,7 @@
+
+    <td width="40%"><%= student.full_name %></td>
+    <td><%= ball_text(ball) %></td>
+    <td class="text-right">
+        <%= link_to 'Змінити', edit_ball_path(examination.id, student.id), remote: true %>
+    </td>
+

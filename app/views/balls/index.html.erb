@@ -1,17 +1,13 @@
-<h4><%= @examination.group.title %> | <%= @examination.group.speciality.title %> | <%= @examination.group.year %></h4>
+<h4 class="text-center"><%= @examination.group.title %> | <%= @examination.group.speciality.title %> | <%= @examination.group.year %></h4>
 
-<h4><%= @examination.title %> | <%= @examination.date.strftime('%d.%m.%Y') %> (<%= @examination.max_value %> балів) </h4>
+<h4 class="text-center"><%= @examination.title %> | <%= @examination.date.strftime('%d.%m.%Y') if @examination.date %> (max: <%= @examination.max_value %> балів) </h4>
 
 <table class="table">
-    <% n = 1 %>
+   
     <% @examination.group.students.each do |student| %>
-      <tr>
-          <td><%= n %>.</td>
-          <td><%= student.full_name %></td>
-          <td>33</td>
-          <td class="text-right"><%= link_to 'Редагувати' %></td>
+      <tr id="student_row_<%= student.id %>">
+        <%= render partial: 'student_ball_row', locals: { examination: @examination, student: student, ball: @balls[student.id] } %>
       </tr>
-      <% n += 1 %>
     <% end %>
     
 </table>

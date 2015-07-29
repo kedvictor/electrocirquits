@@ -1,0 +1,13 @@
+
+    <td width="40%"><%= @student.full_name %></td>
+    <td>
+      <%= form_tag update_ball_path(@examination.id, @student.id), method: :get, 
+        remote: true, id: "student_form_#{@student.id}" do %>
+        <%= text_field_tag :ball, ball_form_text(@ball), class: 'col-xs-3', 
+            type: 'number', min: '-200', max: '200', step: '0.1' %>
+        <%= submit_tag 'Зберегти' %>
+      <% end %>
+    </td>
+    <td class="text-right">
+        <%= link_to 'Відмінити', view_ball_path(@examination.id, @student.id), remote: true %>
+    </td>

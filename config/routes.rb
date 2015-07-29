@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get '/backend' => 'statistics#index'
   get '/backend/balls/:examination_id' => 'balls#index', :as => 'balls'
+  get '/backend/balls/edit_ball/:examination_id/:student_id' => 'balls#edit_ball', :as => 'edit_ball'
+  get '/backend/balls/update_ball/:examination_id/:student_id' => 'balls#update_ball', :as => 'update_ball'
+  get '/backend/balls/view_ball/:examination_id/:student_id' => 'balls#view_ball', :as => 'view_ball'
   get '/statistics/index' => 'statistics#index', :as => 'statistics'
 
   scope 'backend' do

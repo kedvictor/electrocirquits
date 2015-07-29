@@ -1,0 +1,2 @@
+
+$("#student_row_<%=@student.id%>").html("<%= escape_javascript(render partial: 'student_ball_row', locals: { examination: @examination, student: @student, ball: @ball }) %>");
