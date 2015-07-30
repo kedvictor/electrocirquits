@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   
-  skip_before_action :authenticate, only: [:index]
+  skip_before_action :authenticate, only: [:index, :preview]
   
   def index
   end
@@ -12,7 +12,8 @@ class StaticPagesController < ApplicationController
   
   def generate_page
     set_variables
-    str = render_to_string 'preview', layout: 'frontend'
+    str = Net::HTTP.get('electrocirquits.herokuapp.com', '/backend/preview')
+    #str = render_to_string 'preview', layout: 'frontend'
     File.open("app/views/static_pages/index.html", "w") do |file|
       file.write str
     end
