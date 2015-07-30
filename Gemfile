@@ -14,7 +14,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'activerecord-session_store'
 gem 'bootstrap-sass', '~> 3.3.5'
-gem "jquery-validation-rails"
+gem 'jquery-validation-rails'
+gem 'htmlentities'
 
 group :development, :test do
   gem 'byebug'
@@ -24,4 +25,4 @@ end
 
 gem 'rails_12factor', group: :production
 
-ruby "2.2.1"
+ruby '2.2.1'

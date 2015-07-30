@@ -16,11 +16,11 @@ class StaticPagesController < ApplicationController
   def generate_page
     set_variables
     
-    uri = URI.parse("http://electrocirquits/herokuapp.com/backend/preview")
+    uri = URI.parse("http://electrocirquits.herokuapp.com/backend/preview")
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
-    str = response.body
+    str = response.body.force_encoding('UTF-8')
     #str = Net::HTTP.get('http://localhost:3000', '/backend/preview')
     #str = render_to_string 'preview', layout: 'frontend'
     File.open("app/views/static_pages/index.html", "w") do |file|
