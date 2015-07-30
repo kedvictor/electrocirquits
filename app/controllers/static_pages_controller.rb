@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
     set_variables
     host = ActionController::Base.asset_host
     ActionController::Base.asset_host = request.protocol + request.host_with_port if host.blank?
-    str = render_to_string 'preview' 
+    str = render_to_string 'preview'
     Page.add_page str, params[:mnemo], params[:permanent]
     render :text => str, layout: 'frontend'
   end
@@ -25,6 +25,7 @@ class StaticPagesController < ApplicationController
   
   def set_variables
     @time = Time.now.strftime "%d.%m.%Y %H:%M:%S"
+    @groups = Group.where active: true
   end
     
 end
