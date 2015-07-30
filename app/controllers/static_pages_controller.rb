@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   
-  require "net/http"
-  require "uri"
+  require "open-uri"
   
   skip_before_action :authenticate, only: [:index, :preview]
   
