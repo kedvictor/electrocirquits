@@ -1,8 +1,10 @@
 class StaticPagesController < ApplicationController
   
-  skip_before_action :authenticate, only: [:index, :preview]
+  skip_before_action :authenticate, only: [:index]
   
   def index
+    page = Page.last.html
+    render :text => page, layout: 'frontend'
   end
   
   def preview
@@ -14,11 +16,9 @@ class StaticPagesController < ApplicationController
     set_variables
     host = ActionController::Base.asset_host
     ActionController::Base.asset_host = request.protocol + request.host_with_port if host.blank?
-    str = render_to_string 'preview', layout: 'frontend'
-    puts '------------------------------------------------------------'
-    puts str
-    puts '------------------------------------------------------------'
-    render :text => str
+    str = render_to_string 'preview' 
+    Page.add_page str, params[:mnemo], params[:permanent]
+    render :text => str, layout: 'frontend'
   end
   
   private
