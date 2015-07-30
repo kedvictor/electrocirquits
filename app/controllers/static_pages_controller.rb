@@ -12,14 +12,13 @@ class StaticPagesController < ApplicationController
   
   def generate_page    
     set_variables
-    
-    puts "-----before:  #{ActionController::Base.asset_host}-----"
     host = ActionController::Base.asset_host
     ActionController::Base.asset_host = request.protocol + request.host_with_port if host.blank?
-    puts "----- after:  #{ActionController::Base.asset_host}-----"
     str = render_to_string 'preview', layout: 'frontend'
-    File.open('app/views/static_pages/index.html', 'w') { |file| file.write str }
-    redirect_to root_path
+    puts '------------------------------------------------------------'
+    puts str
+    puts '------------------------------------------------------------'
+    render :text => str
   end
   
   private
