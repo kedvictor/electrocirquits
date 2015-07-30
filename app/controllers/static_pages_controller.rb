@@ -21,8 +21,12 @@ class StaticPagesController < ApplicationController
 #    puts '-----------end request-------------'
 #    str = response.body.force_encoding('UTF-8')
     #str = Net::HTTP.get('http://localhost:3000', '/backend/preview')
-    #str = render_to_string 'preview', layout: 'frontend
-    str = open("http://electrocirquits.herokuapp.com/backend/preview") {|f| f.read }
+    str = render_to_string 'preview', layout: 'frontend'
+    #str = open("http://electrocirquits.herokuapp.com/backend/preview") {|f| f.read }
+    puts '-------------------------------------------------------------'
+    puts ActionController::Base.asset_host
+    host = ActionController::Base.asset_host
+ActionController::Base.asset_host = request.protocol + request.host_with_port if host.blank?
     File.open("app/views/static_pages/index.html", "w") do |file|
       file.write str
     end
