@@ -1,15 +1,18 @@
-<h5>Оновлено: <%= @time %> </h5>
+<h5>Оновлено: <%= Time.now.strftime "%d.%m.%Y %H:%M:%S" %> </h5>
 
 <% @groups.each do |group| %>
-  <h4 style="font-weight: bold;"><%= group.title %> | <%= group.speciality.title %> | <%= group.year %></h4>
+  <h4 class='text-center' style="font-weight: bold; color: #5287A6;"><%= group.title %> 
+      | <%= group.speciality.title %> | <%= group.year %></h4>
   
-    <table class="table">
+    <table class="table balls">
         <thead>
             <tr>
                 <th>№</th>
                 <th>П І Б</th>
                 <% group.examinations.each do |examination| %>
-                  <th><%= examination.short_title %></th>
+                <th title='<%= examination.popup_title %>'>
+                  <%= examination.short_title %>
+                </th>
                 <% end %>
             </tr>
         </thead>
@@ -18,7 +21,7 @@
           <% group.students.each do |student| %>
             <% balls = student.balls.index_by &:examination_id %>
             <tr>
-                <td><%= n %></td>
+                <td><%= n %>.</td>
                 <td><%= student.full_name %></td>
                 <% group.examinations.each do |examination| %>
                   <td><%= ball_text(balls[examination.id]) %></td>

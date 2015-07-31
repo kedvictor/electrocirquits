@@ -9,4 +9,6 @@ class Group < ActiveRecord::Base
   validates :year, presence: true
   validates :speciality_id, presence: true
   
+  default_scope { order('title') }
+  
 end

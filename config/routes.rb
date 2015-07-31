@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
   get 'static_pages/index'
+  get '/workload' => 'static_pages#workload', :as => 'workload'
+  get '/plan' => 'static_pages#plan', :as => 'plan'
+  get '/qlist' => 'static_pages#qlist', :as => 'qlist'
+  
   get '/backend' => 'statistics#index'
   get '/backend/balls/:examination_id' => 'balls#index', :as => 'balls'
   get '/backend/balls/edit_ball/:examination_id/:student_id' => 'balls#edit_ball', :as => 'edit_ball'

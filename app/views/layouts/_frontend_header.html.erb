@@ -1,7 +1,23 @@
 
 <div class="row">
-    <div id="frontend_header" class="col-md-12" style="background-color: #B0B0B0; margin-top: 10px;">
-        <h3 class="center">Основи теорії кіл, сигнали та процеси в електроніці (2014 рік)</h3>
+    <div id="frontend_header" class="col-md-12">
+        <span class="title">Основи теорії кіл, сигнали та процеси в електроніці (<%= Time.now.year %> рік)</span>
+
+        <ul class="nav nav-tabs">
+
+            <% if action_name == 'index' || action_name == 'preview' %><li class="active"><% else %><li><% end %>
+                <%= link_to 'Рейтинг', root_path %> </li>
+
+            <% if action_name == 'workload' %><li class="active"><% else %><li><% end %>  
+                <%= link_to 'Навантаження', workload_path %> </li>
+
+            <% if action_name == 'plan' %><li class="active"><% else %><li><% end %>  
+                <%= link_to 'План курсу', plan_path %> </li>
+
+            <% if action_name == 'qlist' %><li class="active"><% else %><li><% end %>  
+                <%= link_to 'Перелік питань', qlist_path %> </li>
+
+        </ul>
     </div>
-    
+
 </div>
