@@ -1,0 +1,14 @@
+<tr>
+    <td><%= link_to examination.title, balls_path(examination.id) %></td>
+    <td><%= examination.date %></td>
+    <td><%= raw colorize_activity 'активний', 'неактивний', examination.active %></td>
+    <td class="text-right">
+        <%= link_to 'Детально', examination_path(examination, group_id: @group_id) %>
+        | <%= link_to 'Редагувати', edit_examination_path(examination, 
+          group_id: @group_id), class: 'text-success' %>
+          <% if examination.balls.empty? %>
+            | <%= link_to 'Видалити', examination_path(examination, 
+              group_id: @group_id), method: :delete, class: 'text-danger' %>
+            <% end %>
+    </td>
+</tr>

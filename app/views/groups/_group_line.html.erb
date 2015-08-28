@@ -1,0 +1,14 @@
+<tr id="<%= group.id %>">
+    <td><%= group.id %></td>
+    <td><%= group.title %></td>
+    <td><%= group.year %></td>
+    <td><%= group.speciality.short_title %></td>
+    <td><%= group.students.count %></td>
+    <td><%= raw colorize_activity 'активна', 'неактивна', group.active %></td>
+    <td><%= link_to 'Редагувати', edit_group_path(group), class: 'text-success' %>
+          <% if group.students.empty? %>
+            | <%= link_to 'Видалити', group_path(group), method: :delete, class: 'text-danger' %>
+          <% end %>
+    </td>
+    <td class="sortable"><%= image_tag "arrows_north_south_2876.png" if group.active %></td>
+</tr>

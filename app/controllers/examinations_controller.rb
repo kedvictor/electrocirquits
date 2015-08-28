@@ -66,7 +66,7 @@ class ExaminationsController < ApplicationController
       group = Group.find_by_id @group_id
       @groups = [group]
     else
-      @groups = Group.all
+      @groups = Group.where active: true
     end
   end
   

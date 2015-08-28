@@ -49,6 +49,15 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
   
+  def update_order
+    data = params[:data]
+    data.each_with_index do |id, index|
+      group = Group.find_by_id id
+      group.update_attribute( :priority, (100 - index) * 100 ) unless group.nil?
+    end
+    render :nothing => true
+  end
+  
   private
   
   def group_params

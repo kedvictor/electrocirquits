@@ -63,12 +63,12 @@ class StudentsController < ApplicationController
       group = Group.find_by_id @group_id
       @groups = [group]
     else
-      @groups = Group.all
+      @groups = Group.where active: true
     end
   end
   
   def student_params
-    params.require(:student).permit(:id, :title, :group_id, :active)
+    params.require(:student).permit(:id, :full_name, :group_id, :active)
   end
   
 end

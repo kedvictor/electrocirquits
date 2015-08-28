@@ -1,7 +1,7 @@
 <span class=page_title>Перелік академічних груп </span>
 
 
-<table class="table">
+<table id="groups_table" class="table">
     <thead>
         <tr>
             <th>id</th>
@@ -11,25 +11,51 @@
             <th>Кількість студентів</th>
             <th>Активність</th>
             <th>Дія</th>
+            <th></th>
         </tr>
     </thead>
-
-    <% @groups.each do |group| %>
-      <tr>
-          <td><%= group.id %></td>
-          <td><%= group.title %></td>
-          <td><%= group.year %></td>
-          <td><%= group.speciality.short_title %></td>
-          <td><%= group.students.count %></td>
-          <td><%= group.active ? 'активна' : 'неактивна' %></td>
-          <td><%= link_to 'Редагувати', edit_group_path(group), class: 'text-success' %>
-              <% if group.students.empty? %>
-                | <%= link_to 'Видалити', group_path(group), method: :delete, class: 'text-danger' %>
-              <% end %>
+    <tbody>
+        
+      <% @groups.select{ |g| g.active }.each do |group| %>
+        <%= render partial: 'group_line', locals: {group: group} %>
+      <% end %>
+      <tr style="height: 70px;">
+          <td colspan="8" style="vertical-align: bottom;">
+              <span style="font-weight: bold">Неактивні групи</span>
           </td>
       </tr>
-    <% end %>
-
+      <% @groups.select{ |g| !g.active }.each do |group| %>
+        <%= render partial: 'group_line', locals: {group: group} %>
+      <% end %>
+    
+    </tbody>
 </table>
 
 <%= link_to 'Створити нову групу', new_group_path, class: 'btn btn-primary' %>
+
+<script>
+
+  var fixHelperModified = function(e, tr) {
+    var $originals = tr.children();
+    var $helper = tr.clone();
+    $helper.addClass('active');
+    $helper.children().each(function(index){
+      $(this).width($originals.eq(index).width() + 16);
+    });
+    return $helper;
+  };
+
+  $("#groups_table tbody").sortable({
+    helper: fixHelperModified,
+    handle: ".sortable",
+    axis: 'y',
+    cursor: 'move',
+    update: function(event, ui){
+      var a = $('#groups_table tbody').sortable('toArray');
+      $.post('/groups/update_order', {
+        data: a
+      });
+    }
+  });
+
+</script>

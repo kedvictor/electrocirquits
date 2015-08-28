@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/backend/generate_page' => 'static_pages#generate_page', :as => 'generate_page'
   
   get '/statistics/index' => 'statistics#index', :as => 'statistics'
+  post 'groups/update_order' => 'groups/update_order'
 
   scope 'backend' do
     resources :specialities
