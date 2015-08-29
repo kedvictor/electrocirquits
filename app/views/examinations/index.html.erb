@@ -6,7 +6,7 @@
 
 <% @groups.each do |group| %>
   <br />
-  <table class="table">
+  <table class="table examinations_table">
       <thead>
           <tr>
               <th><%= group.title %></th>
@@ -34,3 +34,34 @@
   </table>
 
 <% end %>
+  
+<script>
+
+  var fixHelperModified = function(e, tr) {
+    var $originals = tr.children();
+    var $helper = tr.clone();
+    $helper.addClass('active');
+    $helper.children().each(function(index){
+      $(this).width($originals.eq(index).width() + 16);
+    });
+    return $helper;
+  };
+
+
+  $(".examinations_table tbody").each(function(index){
+    $(this).sortable({
+      helper: fixHelperModified,
+      handle: ".sortable",
+      axis: 'y',
+      cursor: 'move',
+      update: function(event, ui){
+        var a = $(this).sortable('toArray');
+        $.post('/examinations/update_order', {
+          data: a
+        });
+      }
+    });    
+  });
+    
+
+</script>

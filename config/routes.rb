@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
   get '/statistics/index' => 'statistics#index', :as => 'statistics'
   post 'groups/update_order' => 'groups/update_order'
+  post 'examinations/update_order' => 'examinations/update_order'
 
   scope 'backend' do
     resources :specialities

@@ -1,4 +1,5 @@
-<tr>
+
+<tr id="<%= examination.id %>">
     <td><%= link_to examination.title, balls_path(examination.id) %></td>
     <td><%= examination.date %></td>
     <td><%= raw colorize_activity 'активний', 'неактивний', examination.active %></td>
@@ -11,4 +12,5 @@
               group_id: @group_id), method: :delete, class: 'text-danger' %>
             <% end %>
     </td>
+    <td class="sortable"><%= image_tag "arrows_north_south_2876.png" if examination.active %></td>
 </tr>

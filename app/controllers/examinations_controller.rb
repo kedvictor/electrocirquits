@@ -55,6 +55,15 @@ class ExaminationsController < ApplicationController
     redirect_to examinations_path(group_id: @group_id)
   end
   
+  def update_order
+    data = params[:data]
+    data.each_with_index do |id, index|
+      examination = Examination.find_by_id id
+      examination.update_attribute( :priority, (100 - index) * 100 ) unless examination.nil?
+    end
+    render :nothing => true
+  end
+  
   private
   
   def set_group
