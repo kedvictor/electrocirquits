@@ -1,6 +1,6 @@
 
 <tr id="<%= examination.id %>">
-    <td><%= link_to examination.title, balls_path(examination.id) %></td>
+    <td><%= link_to examination.title, balls_path(examination.id), title: 'Ввести оцінки' %></td>
     <td><%= examination.date %></td>
     <td><%= raw colorize_activity 'активний', 'неактивний', examination.active %></td>
     <td class="text-right">
