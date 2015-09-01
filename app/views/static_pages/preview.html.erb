@@ -1,4 +1,4 @@
-<h5>Оновлено: <%= Time.now.strftime "%d.%m.%Y %H:%M:%S" %> </h5>
+<p>Оновлено: <%= Time.now.strftime "%d.%m.%Y %H:%M:%S" %> </p>
 
 <% @groups.each do |group| %>
   <h4 class='text-center' style="font-weight: bold; color: #5287A6;"><%= group.title %> 
