@@ -10,7 +10,7 @@
       <thead>
           <tr>
               <th><%= group.title %></th>
-              <th><%= group.speciality.title %></th>
+              <th><%= group.speciality.short_title %></th>
               <th><%= group.year %></th>
               <th class="text-right">
                   <%= link_to 'Додати студента', new_student_path(student_group_id: group.id, group_id: @group_id) %>
@@ -21,21 +21,14 @@
           </tr>
       </thead>
       <tbody>
-          <% n = 1 %>
-          <% group.students.each do |student| %>
-            <tr>
-                <td><%= n if student.active %>.</td>
-                <td><%= student.full_name %></td>
-                <td><%= student.active ? 'активний' : 'неактивний' %></td>
-                <td class="text-right">
-                      <%= link_to 'Редагувати', edit_student_path(student, group_id: @group_id), class: 'text-success' %>
-                      <% if student.balls.empty? %>
-                        | <%= link_to 'Видалити', student_path(student, group_id: @group_id), method: :delete, class: 'text-danger' %>
-                      <% end %>
-                </td>
-            </tr>
-            <% n += 1 if student.active %>
+         <% n = 1 %>
+          <% group.active_students.each do |student| %>
+            <%= render partial: 'student_line', locals: { student: student, number: n } %>
+            <% n += 1 %>
           <% end %>
+         <% group.inactive_students.each do |student| %>
+            <%= render partial: 'student_line', locals: { student: student, number: nil } %>
+         <% end %>
       </tbody>
 
   </table>

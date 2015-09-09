@@ -10,7 +10,7 @@
           <% if examination.balls.empty? %>
             | <%= link_to 'Видалити', examination_path(examination, 
               group_id: @group_id), method: :delete, class: 'text-danger' %>
-            <% end %>
+          <% end %>
     </td>
     <td class="sortable"><%= image_tag "arrows_north_south_2876.png" if examination.active %></td>
 </tr>

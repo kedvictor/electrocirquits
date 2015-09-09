@@ -23,7 +23,7 @@ class ExaminationsController < ApplicationController
       flash[:success] = 'Новий тип оцінювання створено'
       redirect_to examinations_path(group_id: @group_id)
     else
-      flash[:success] = 'Помилка при створенні типу оцінювання'
+      flash[:error] = 'Помилка при створенні типу оцінювання'
       render action: :form
     end
   end
@@ -39,7 +39,7 @@ class ExaminationsController < ApplicationController
       flash[:success] = 'Тип оцінювання змінено'
       redirect_to examinations_path(group_id: @group_id)
     else
-      flash[:success] = 'Помилка при редагуванні типу оцінювання'
+      flash[:error] = 'Помилка при редагуванні типу оцінювання'
       render action: :form
     end
   end
@@ -63,6 +63,7 @@ class ExaminationsController < ApplicationController
     end
     render :nothing => true
   end
+
   
   private
   

@@ -1,0 +1,12 @@
+
+<tr>
+  <td><%= "#{number}." if number %></td>
+  <td><%= student.full_name %></td>
+  <td><%= raw colorize_activity 'активний', 'неактивний', student.active %></td>
+  <td class="text-right">
+    <%= link_to 'Редагувати', edit_student_path(student, group_id: @group_id), class: 'text-success' %>
+      <% if student.balls.empty? %>
+        | <%= link_to 'Видалити', student_path(student, group_id: @group_id), method: :delete, class: 'text-danger' %>
+        <% end %>
+      </td>
+</tr>

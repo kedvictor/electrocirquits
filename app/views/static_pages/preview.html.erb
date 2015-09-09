@@ -9,7 +9,7 @@
             <tr>
                 <th>№</th>
                 <th>П І Б</th>
-                <% group.examinations.each do |examination| %>
+                <% group.active_examinations.each do |examination| %>
                 <th title='<%= examination.popup_title %>'>
                   <%= examination.short_title %>
                 </th>
@@ -18,12 +18,12 @@
         </thead>
         <tbody>
           <% n = 1 %>
-          <% group.students.each do |student| %>
+          <% group.active_students.each do |student| %>
             <% balls = student.balls.index_by &:examination_id %>
             <tr>
                 <td><%= n %>.</td>
                 <td><%= student.full_name %></td>
-                <% group.examinations.each do |examination| %>
+                <% group.active_examinations.each do |examination| %>
                   <td><%= ball_text(balls[examination.id]) %></td>
                 <% end %>
             </tr>
