@@ -2,7 +2,8 @@ class StatisticsController < ApplicationController
   
   layout 'backend'
   
-  def index    
+  def index
+    
   end
   
 end

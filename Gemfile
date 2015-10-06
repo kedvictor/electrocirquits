@@ -17,6 +17,8 @@ gem 'activerecord-session_store'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-validation-rails'
 gem 'htmlentities'
+gem "chartkick"
+gem 'groupdate'
 
 group :development, :test do
   gem 'byebug'
