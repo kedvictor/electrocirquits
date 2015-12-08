@@ -5,7 +5,7 @@
 
         <ul class="nav nav-tabs">
 
-            <% if action_name == 'index' || action_name == 'preview' %><li class="active"><% else %><li><% end %>
+            <% if ['index','preview','generate_page'].include? action_name %><li class="active"><% else %><li><% end %>
                 <%= link_to 'Рейтинг', root_path %> </li>
 
             <% if action_name == 'workload' %><li class="active"><% else %><li><% end %>  
