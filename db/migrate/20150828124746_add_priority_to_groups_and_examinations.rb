@@ -7,7 +7,7 @@ class AddPriorityToGroupsAndExaminations < ActiveRecord::Migration
   
   def unchange
     remove_column :groups, :priority
-    remove_column :examinations
+    remove_column :examinations, :priority
   end
   
 end
