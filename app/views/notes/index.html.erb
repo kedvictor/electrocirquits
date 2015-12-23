@@ -1,4 +1,4 @@
-<span class=page_title>Оголошення </span>
+<span class=page_title>Примітки </span>
 
 
 <table id="notes_table" class="table">
@@ -17,7 +17,7 @@
       <% end %>
       <tr style="height: 70px;">
           <td colspan="8" style="vertical-align: bottom;">
-              <span style="font-weight: bold">Неактивні оголошення</span>
+              <span style="font-weight: bold">Неактивні примітки</span>
           </td>
       </tr>
       <% @notes.select{ |g| !g.active }.each do |note| %>
@@ -27,7 +27,7 @@
     </tbody>
 </table>
 
-<%= link_to 'Створити нове оголошення', new_note_path, class: 'btn btn-primary' %>
+<%= link_to 'Створити нову примітку', new_note_path, class: 'btn btn-primary' %>
 
 <script>
 

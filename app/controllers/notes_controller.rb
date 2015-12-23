@@ -14,10 +14,10 @@ class NotesController < ApplicationController
   def create
     @note = Note.new note_params
     if @note.save
-      flash[:success] = 'Оголошення створено'
+      flash[:success] = 'Примітку створено'
       redirect_to notes_path
     else
-      flash[:error] = 'Неможливо створити оголошення'
+      flash[:error] = 'Неможливо створити примітку'
       render action: :form
     end
   end
@@ -30,10 +30,10 @@ class NotesController < ApplicationController
   def update
     @note = Note.find params[:id]
     if @note.update_attributes note_params
-      flash[:success] = 'Оголошення змінено'
+      flash[:success] = 'Примітку змінено'
       redirect_to notes_path
     else
-      flash[:error] = 'Неможливо змінити оголошення'
+      flash[:error] = 'Неможливо змінити примітку'
       render action: :form
     end
   end
@@ -41,7 +41,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find params[:id]
     @note.destroy
-    flash[:success] = 'Оголошення видалено'
+    flash[:success] = 'Примітку видалено'
     redirect_to notes_path
   end
   

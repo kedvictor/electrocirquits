@@ -1,6 +1,6 @@
 
 <span class="page_title">
-    <%= @note.new_record? ? 'Створення оголошення' : 'Редагування оголошення' %> 
+    <%= @note.new_record? ? 'Створення примітки' : 'Редагування примітки' %>
 </span>
 
 <%= form_for @note, html: { id: 'note_form' } do |form| %>
@@ -8,7 +8,7 @@
   <table class="table">
       <tr>
           <td class="text-right" width='20%'><%= form.label :text, 'Текст' %></td>
-          <td class="text-left"><%= form.text_area :text, class: 'col-xs-8' %></td>
+          <td class="text-left"><%= form.text_area :text, :rows => 10, class: 'col-xs-10' %></td>
       </tr>
       <tr>
           <td class="text-right"><%= form.label :active, 'Активність' %></td>
