@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   scope 'backend' do
     resources :specialities
     resources :groups
+    resources :notes
     resources :students
     resources :examinations
   end

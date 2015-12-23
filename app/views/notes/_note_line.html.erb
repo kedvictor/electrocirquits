@@ -1,0 +1,9 @@
+<tr id="<%= note.id %>">
+    <td><%= note.id %></td>
+    <td><%= raw note.text %></td>
+    <td><%= raw colorize_activity 'активне', 'неактивне', note.active %></td>
+    <td><%= link_to 'Редагувати', edit_note_path(note), class: 'text-success' %>
+      | <%= link_to 'Видалити', note_path(note), method: :delete, class: 'text-danger' %>
+    </td>
+    <td class="sortable"><%= image_tag "arrows_north_south_2876.png" if note.active %></td>
+</tr>

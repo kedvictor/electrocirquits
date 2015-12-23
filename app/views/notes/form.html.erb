@@ -1,0 +1,39 @@
+
+<span class="page_title">
+    <%= @note.new_record? ? 'Створення оголошення' : 'Редагування оголошення' %> 
+</span>
+
+<%= form_for @note, html: { id: 'note_form' } do |form| %>
+
+  <table class="table">
+      <tr>
+          <td class="text-right" width='20%'><%= form.label :text, 'Текст' %></td>
+          <td class="text-left"><%= form.text_area :text, class: 'col-xs-8' %></td>
+      </tr>
+      <tr>
+          <td class="text-right"><%= form.label :active, 'Активність' %></td>
+          <td class="text-left"><%= form.check_box :active %></td>
+      </tr>
+      <tr>
+          <td><%= link_to "Відмінити", notes_path, class: 'btn btn-warning' %></td>
+          <td><%= form.submit (@note.new_record? ? 'Створити' : 'Зберегти'), class: 'btn btn-primary' %></td>
+      </tr>
+  </table>
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+      
+      $('#note_form').validate({
+          rules: {
+              'note[text]': {required: true}              
+          },
+          messages: {
+              'note[text]': 'Заповніть поле'
+          }
+      });
+  });
+
+</script>

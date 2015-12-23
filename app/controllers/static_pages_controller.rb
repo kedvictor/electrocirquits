@@ -35,6 +35,7 @@ class StaticPagesController < ApplicationController
   
   def set_variables
     @groups = Group.where active: true
+    @notes = Note.where active: true
   end
     
 end
