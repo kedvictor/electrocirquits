@@ -18,7 +18,7 @@ class BallsController < ApplicationController
     @examination = Examination.find params[:examination_id]
     @student = Student.find params[:student_id]
     @ball = Ball.where(examination_id: @examination.id, student_id: @student.id).first_or_create
-    @ball.update_attribute :value, params[:ball]
+    @ball.update_attributes value: params[:value], note: params[:note]
     @ball.reload
     render 'student_ball_row'
   end
