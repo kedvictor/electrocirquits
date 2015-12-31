@@ -1,11 +1,11 @@
 
-    <td width="40%"><%= @student.full_name %></td>
+    <td width="30%"><%= @student.full_name %></td>
     <td>
       <%= form_tag update_ball_path(@examination.id, @student.id), method: :get, 
         remote: true, id: "student_form_#{@student.id}" do %>
         <%= text_field_tag :value, @ball.value, class: 'col-xs-3',
             type: 'number', min: '-200', max: '200', step: 0.1 %>
-        <%= text_field_tag :note, @ball.note, class: 'col-xs-4' %>
+        <%= text_field_tag :note, @ball.note, class: 'col-xs-8' %>
         <%= submit_tag 'Зберегти' %>
       <% end %>
     </td>

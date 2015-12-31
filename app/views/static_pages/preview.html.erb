@@ -24,7 +24,7 @@
                 <td><%= n %>.</td>
                 <td><%= student.full_name %></td>
                 <% group.active_examinations.each do |examination| %>
-                  <td><%= ball_text(balls[examination.id], '-') %></td>
+                  <td><%= raw ball_text(balls[examination.id], '-') %></td>
                 <% end %>
             </tr>
             <% n += 1 %>
