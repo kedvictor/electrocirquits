@@ -14,5 +14,6 @@ class Group < ActiveRecord::Base
   validates :speciality_id, presence: true
   
   default_scope { order('priority DESC') }
-  
+  scope :all_active, -> { where(active: true) }
+
 end

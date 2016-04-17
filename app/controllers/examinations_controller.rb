@@ -18,11 +18,19 @@ class ExaminationsController < ApplicationController
   end
   
   def create
-    @examination = Examination.new examination_params
-    if @examination.save
+    groups = params[:duplicate] ? Group.all_active : Group.where(id: params[:examination][:group_id])
+    pars = examination_params.clone
+    begin
+      groups.each do |group|
+        pars[:group_id] = group.id
+        examination = Examination.where(title: pars[:title], group_id: pars[:group_id]).first_or_create(pars)
+        @examination = examination if group.id == params[:examination][:group_id]
+      end
       flash[:success] = 'Новий тип оцінювання створено'
       redirect_to examinations_path(group_id: @group_id)
-    else
+    rescue Exception => e
+      puts e.message
+      @examination ||= Examination.new examination_params
       flash[:error] = 'Помилка при створенні типу оцінювання'
       render action: :form
     end

@@ -45,6 +45,12 @@
           <td class="text-right"><%= form.label :active, 'Активність' %></td>
           <td class="text-left"><%= form.check_box :active %></td>
       </tr>
+      <% if @examination.new_record? %>
+        <tr>
+            <td class="text-right"><%= label_tag :duplicate, 'Створити для всіх активних груп' %>  </td>
+            <td class="text-left"><%= check_box_tag :duplicate %></td>
+        </tr>
+      <% end %>
       <tr>
           <td><%= link_to "Відмінити", examinations_path(group_id: @group_id), class: 'btn btn-warning' %></td>
           <td><%= form.submit (@examination.new_record? ? 'Створити' : 'Зберегти'), class: 'btn btn-primary' %></td>
