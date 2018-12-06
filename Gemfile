@@ -19,6 +19,8 @@ gem 'jquery-validation-rails'
 gem 'htmlentities'
 gem "chartkick"
 gem 'groupdate'
+gem "nokogiri", ">= 1.8.2"
+gem "sprockets", "~> 3.7.2"
 
 group :development, :test do
   gem 'byebug'
